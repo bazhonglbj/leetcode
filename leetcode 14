@@ -1,0 +1,18 @@
+ public String longestCommonPrefix(String[] strs) {
+       if (strs.length == 0)
+			return "";
+		String prefix = strs[0];
+		for (int i = 1; i < strs.length; i++) {
+			//取长度短，避免越界，substring 是前闭后开
+			if (prefix.length() > strs[i].length())
+				prefix = prefix.substring(0, strs[i].length());
+			for (int j = 0; j < prefix.length(); j++)
+				if (prefix.charAt(j) != strs[i].charAt(j)) {
+					prefix = prefix.substring(0, j);
+					break;
+				}
+		}
+		return prefix;
+
+
+    }
