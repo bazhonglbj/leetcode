@@ -1,0 +1,36 @@
+public ListNode rotateRight(ListNode head, int k) {
+        if(head == null || head.next == null || k <= 0)
+            return head;
+ 
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode slow = dummy , fast = dummy, iterator = head;
+        int length = getListLength(head);
+ 
+        //初始化fast的位置
+        for (int i = 0; i < k % length; i++){
+            fast = fast.next;
+        }
+ 
+        //移动slow与fast
+        while (fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next;
+        }
+ 
+        fast.next = dummy.next;
+        dummy.next = slow.next;
+        slow.next = null;
+ 
+        return dummy.next;
+    }
+ 
+    private int getListLength(ListNode head) {
+        int count = 0;
+        ListNode iterator = head;
+        while (iterator != null){
+            iterator = iterator.next;
+            count++;
+        }
+        return count;
+    }
