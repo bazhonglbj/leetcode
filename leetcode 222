@@ -1,0 +1,18 @@
+ public int countNodes(TreeNode root) {
+        if(root == null)
+            return 0;
+        int lh = lheight(root);
+        int rh = rheight(root);
+        if (lh == rh) return pow(2, lh) - 1;
+        else return countNodes(root.left) + countNodes(root.right) +1;
+    }
+    
+    public int lheight(TreeNode root){
+        if(root = null) return 0;
+            return 1+lheihght(root.left);
+    }
+    
+    public int rheight(TreeNode root){
+        if(root = null) return 0;
+            return 1+rheihght(root.right);
+    }
